@@ -10,6 +10,10 @@ cask "codewalk" do
   app "CodeWalk.app"
   binary "CodeWalk.app/Contents/MacOS/codewalk", target: "codewalk"
 
+  postflight do
+    system_command "/usr/bin/xattr", args: ["-cr", "#{appdir}/CodeWalk.app"]
+  end
+
   zap trash: [
     "~/.codewalk"
   ]
